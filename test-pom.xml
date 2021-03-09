@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.intrasoft</groupId>
+  <artifactId>ssp.uganda.importers</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
+
+    <dataimporter.common.version>0.0.6</dataimporter.common.version>
+    <oracle.ojdbc.version>12.2.0.1</oracle.ojdbc.version>
+    <hibernate.core.version>5.4.16.Final</hibernate.core.version>
+    <guava.version>23.5-jre</guava.version>
+
+    <!--Logging -->
+    <version.slf4j>1.7.21</version.slf4j>
+    <version.log4j>1.2.17</version.log4j>
+
+    <junit.version>4.12</junit.version>
+
+    <!-- Security -->
+    <zeno.api.version>0.2.1-SNAPSHOT</zeno.api.version>
+    <zeno.impl.def.version>0.2.1-SNAPSHOT</zeno.impl.def.version>
+    <zeno.impl.ssp.version>0.2.1-SNAPSHOT</zeno.impl.ssp.version>
+    <zeno.services.version>0.2.1-SNAPSHOT</zeno.services.version>
+
+    <common.users.jpa.version>1.4.1-SNAPSHOT</common.users.jpa.version>
+
+  </properties>
+
+
+  <modules>
+    <module>ssp.dataimporter.uganda.security</module>
+    <module>ssp.dataimporter.uganda.process</module>
+    <module>ssp.dataimporter.uganda.menus</module>
+    <module>ssp.dataimporter.uganda.core</module>
+    <module>ssp.dataimporter.uganda.registry</module>
+    <module>ssp.dataimporter.uganda.objects</module>
+  </modules>
+
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.core.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc8</artifactId>
+      <version>${oracle.ojdbc.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.reflections</groupId>
+      <artifactId>reflections</artifactId>
+      <version>0.9.11</version>
+    </dependency>
+
+    <!--Logging -->
+
+    <!--Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${version.slf4j}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${version.slf4j}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>${version.log4j}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.intrasoft</groupId>
+      <artifactId>ssp.domain.enums</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.intrasoft</groupId>
+      <artifactId>ssp.domain.core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!-- test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <!-- For maven to be able to find master pom.xml during the first build after a version increase -->
+
+  <repositories>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <name>ssp-release-optimised</name>
+      <url>http://proddev26.athens.intrasoft-intl.private:8081/artifactory/ssp-release-optimised</url>
+    </repository>
+    <repository>
+      <snapshots/>
+      <id>snapshots</id>
+      <name>ssp-snapshot-optimised</name>
+      <url>http://proddev26.athens.intrasoft-intl.private:8081/artifactory/ssp-snapshot-optimised</url>
+    </repository>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>jasper</id>
+      <name>jasper</name>
+      <url>http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts</url>
+    </repository>
+  </repositories>
+
+</project>
